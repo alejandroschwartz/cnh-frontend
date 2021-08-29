@@ -1,0 +1,20 @@
+@import "../Vars.scss";
+
+.CreateSensor_container {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        margin: 16px auto;
+    }
+}
+.CreateSensor_form {
+    display: flex;
+    flex-direction: column;
+}
+.CreateSensor_input {
+    margin: 4px auto;
+    width: 100%;
+    max-width: 640px;
+    height: 30px;
+}

@@ -1,0 +1,60 @@
+@import "../Vars.scss";
+
+.Sensor__container {
+    h2 {
+        text-align: center;
+    }
+}
+.Sensor__grafica {
+    overflow: hidden;
+    margin: auto;
+    margin-top: 24px;
+    height: 360px;
+    width: 600px;
+}
+.Sensor__card {
+    margin: 4px 12px;
+    padding: 4px;
+    border: 1px solid #313434;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+     
+    p {
+        margin: 4px;
+    }
+}
+.Sensor__button--delete {
+    margin: 4px;
+    border: 0;
+    border-radius: 8px;
+
+    background-color: #e94040;
+    color: #fff;
+    height: 36px;
+    width: 80px;
+    font-family: $primary-font;
+    font-size: 14px;
+    font-weight: 700;
+}
+.Sensor__button {
+    margin: 4px;
+    border: 0;
+    border-radius: 8px;
+    background-color: #3483fa;
+    height: 36px;
+    width: 80px;  
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: $primary-font;
+    font-size: 14px;
+    font-weight: 700;
+    
+    .edit {
+        margin: auto;
+        text-decoration: none;
+        color: #fff;
+    }
+}

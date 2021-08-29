@@ -1,0 +1,13 @@
+@import "./Vars.scss";
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $background-secondary;
+    font-family: $primary-font;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
