@@ -1,5 +1,51 @@
 @import "../Vars.scss";
 
+// ----- Hero -----
+.Hero {
+    width: 100vw;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    
+    @media screen and (max-width:900px) {
+        flex-direction: column;
+    }
+}
+.Hero__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Hero__image {
+    object-fit: cover;
+    height: 290px;
+    right: 0;
+
+    @media screen and (max-width:900px) {
+        height: 240px;
+    }
+}
+.Hero__title {
+    margin-top: 30px;
+    text-align: start;
+    font-size: 22px;
+    font-weight: 500;
+}
+.Hero__button {
+    margin: auto;
+    padding: 12px 36px;
+    border: none;
+    border-radius: 8px;
+    background-color: #a21e25;
+    color: #fff;
+    text-decoration: none;
+}
+// --------------------
+
+// ----- Home -----
 .Home {
     overflow: hidden;
 
@@ -44,11 +90,12 @@
 
 .Item__text {
     margin: 6px;
-    height: 280px;
+    height: 60px;
 }
 
 .Item__title {
-    font-size: 16px;
+    font-size: 18px;
+    color: #a21e25;
 }
 
 @media screen and (max-width:769px) {
@@ -62,3 +109,4 @@
         }
     }
 }
+// --------------------

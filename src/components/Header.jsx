@@ -10,9 +10,11 @@ const Header = () => {
     return (
         <header className="Header" >
             <div className="Header__container" >
-                <h1 className="Header__title" >
-                    FANIOT
-                </h1>
+                <img 
+                    className="Header__title" 
+                    src="../styles/images/case-ih.png" 
+                    alt="logo case ih" 
+                />
                 <button className="Header__icon" onClick={() => setNav(!nav)} >
                     {nav === true 
                         ? <i className='fas fa-times'></i>

@@ -8,17 +8,20 @@ const Footer = () => {
         <div>
             <div className="Footer__altillo" >
                 <div className="Footer__altillo--div" >
-                    <h2>FANIOT</h2>
-                    <p><strong>Parque Industrial Posadas</strong></p>
-                    <p>Calle 60 y 229 - Paraje Nemesio Parma</p>
-                    <p>Misiones, Posadas (3300)</p>
+                    <img 
+                        className="Footer__title" 
+                        src="../styles/images/case-ih.png" 
+                        alt="logo case ih" 
+                    />
+                    <p><strong>Case IH y CNH Industrial Capital son marcas registradas de CNH Industrial America LLC.</strong></p>
+                    <p>© 2021 CNH Industrial América LLC. Todos los derechos reservados.</p>
                 </div>
                 <div className="Footer__altillo--div" >
                     <p>¡Síguenos en las redes!</p>
-                    <a href="https://www.facebook.com/Faniot-Argentina-102593284729500">
+                    <a href="">
                         <i className="fab fa-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com/faniotargentina/">
+                    <a href="">
                         <i className="fab fa-instagram"></i>
                     </a>
                 </div>

@@ -9,11 +9,16 @@
     overflow: hidden;
     margin: auto;
     margin-top: 24px;
-    height: 360px;
+    padding: 4px 12px;
+    height: 320px;
     width: 600px;
+    // background-color: #fff;
+    // border: 1px solid #000;
 }
 .Sensor__card {
+    width: 98%;
     margin: 4px 12px;
+    margin-bottom: 60px;
     padding: 4px;
     border: 1px solid #313434;
     background-color: #fff;
@@ -21,35 +26,44 @@
     flex-wrap: wrap;
     justify-content: space-between;
      
+    tr {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    td {
+        display: flex;
+    }
     p {
         margin: 4px;
     }
 }
 .Sensor__button--delete {
-    margin: 4px;
+    margin: 4px 12px;
     border: 0;
-    border-radius: 8px;
+    border-radius: 16px;
 
     background-color: #e94040;
     color: #fff;
-    height: 36px;
-    width: 80px;
+    height: 32px;
+    width: 32px;
     font-family: $primary-font;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
 }
 .Sensor__button {
     margin: 4px;
     border: 0;
-    border-radius: 8px;
+    border-radius: 16px;
     background-color: #3483fa;
-    height: 36px;
-    width: 80px;  
+    height: 32px;
+    width: 32px;  
     display: flex;
     justify-content: center;
     text-align: center;
     font-family: $primary-font;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     
     .edit {

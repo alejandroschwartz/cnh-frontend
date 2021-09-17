@@ -4,59 +4,39 @@ import '../styles/components/CreateSensor.scss';
 
 const Home = (props) => {
     console.log(props.match.params)
-    const [sensor, setSensor] = useState({campo: ""});
-    const [brand, setBrand] = useState({campo: ""});
-    const [model, setModel] = useState({campo: ""});
-    const [author, setAuthor] = useState({campo: ""});
-    const [temperature, setTemperature] = useState({campo: ""});
-    const [description, setDescription] = useState({campo: ""});
-    const [createdAt, setCreatedAt] = useState({campo: ""});
+    const [maquina, setMaquina] = useState({campo: ""});
+    const [descripcion, setDescripcion] = useState({campo: ""});
+    const [medicion, setMedicion] = useState({campo: ""});
     const [sensors, setSensors] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/sensors', {
+        fetch('https://localhost:5001/api/mediciones', {
             method: "POST"
         })
         .then(response => response.json())
         .then(data => setSensors(data))
     }, []);
     console.log(sensors);
-
-    const changeSensor = (e) => {
-        setSensor({ ...sensor, campo: e.target.value });
+ 
+    const changeMaquina = (e) => {
+        setMaquina({ ...maquina, campo: e.target.value });
     };
-    const changeBrand = (e) => {
-        setBrand({ ...brand, campo: e.target.value });
+    const changeDescripcion = (e) => {
+        setDescripcion({ ...descripcion, campo: e.target.value });
     };
-    const changeModel = (e) => {
-        setModel({ ...model, campo: e.target.value });
-    };   
-    const changeAuthor = (e) => {
-        setAuthor({ ...author, campo: e.target.value });
-    };   
-    const changeTemperature = (e) => {
-        setTemperature({ ...temperature, campo: e.target.value });
+    const changeMedicion = (e) => {
+        setMedicion({ ...medicion, campo: e.target.value });
     };
-    const changeDescription = (e) => {
-        setDescription({ ...description, campo: e.target.value });
-    };
-    const changeCreatedAt = (e) => {
-        setCreatedAt({ ...createdAt, campo: e.target.value });
-    };
-    console.log("Sen:", sensor.campo, "Mar:", brand.campo, "Mod:", model.campo, "Aut:", author.campo, "Tem:", temperature.campo, "Des:", description.campo, "Fec:", createdAt.campo)
+    console.log("Maq:", maquina.campo, "Des:", descripcion.campo, "Med:", medicion.campo)
 
     function sendSensor(e) {
         e.preventDefault();
         const newSensor = {
-            id_sensor: sensor.campo,
-            brand: brand.campo,
-            model: model.campo,
-            author: author.campo,
-            temperature: temperature.campo,
-            description: description.campo,
-            createdAt: createdAt.campo,
+            maquina: maquina.campo,
+            descripcion: descripcion.campo,
+            medicion: medicion.campo,
         };
-        fetch('http://localhost:3000/api/sensors', {
+        fetch('https://localhost:5001/api/mediciones', {
             method: "POST",
             body: JSON.stringify(newSensor),
             headers: {
@@ -71,64 +51,33 @@ const Home = (props) => {
     return (
         <div className="CreateSensor_container" >
             <h1>Registra una nueva medición</h1>
+            <img className="CreateSensor_img" src="../styles/images/080.png" alt="" />
             <form className="CreateSensor_form" onSubmit={sendSensor} >
                 <input 
                     className="CreateSensor_input"
-                    type="text" 
-                    name="sensor" 
-                    placeholder="Id sensor" 
-                    onChange={changeSensor}
-                    required 
-                />
-                <input 
-                    className="CreateSensor_input"
-                    type="text" 
-                    name="brand" 
-                    placeholder="Marca" 
-                    onChange={changeBrand}
-                    required 
-                />
-                <input 
-                    className="CreateSensor_input"
-                    type="text" 
-                    name="model" 
-                    placeholder="Modelo" 
-                    onChange={changeModel}
-                    required
-                />
-                <input 
-                    className="CreateSensor_input"
-                    type="text" 
-                    name="author" 
-                    placeholder="Autor de la medición" 
-                    onChange={changeAuthor}
-                    required
-                />
-                <input 
-                    className="CreateSensor_input"
                     type="number" 
-                    name="temperature" 
-                    placeholder="Temperatura"
-                    onChange={changeTemperature}
+                    name="maquina" 
+                    placeholder="Máquina"
+                    onChange={changeMaquina}
                     required
                 />
                 <input 
                     className="CreateSensor_input"
                     type="text" 
-                    name="description" 
-                    placeholder="Descripción opcional" 
-                    onChange={changeDescription}
+                    name="medicion" 
+                    placeholder="Medición" 
+                    onChange={changeMedicion}
+                    required
                 />
                 <input 
                     className="CreateSensor_input"
-                    type="date" 
-                    name="created_at" 
-                    placeholder="Fecha de medición" 
-                    onChange={changeCreatedAt}
-                    required
+                    type="text" 
+                    name="descripcion" 
+                    placeholder="Descripción opcional" 
+                    onChange={changeDescripcion}
                 />
-                <button className="CreateSensor_input" type="submit" >
-                    Guardar
+                <button className="CreateSensor_button" type="submit" >
+                    GUARDAR
                 </button>
             </form>
         </div>
