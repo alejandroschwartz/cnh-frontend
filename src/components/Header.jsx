@@ -1,10 +1,9 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../styles/components/Header.scss';
 
 const Header = () => {
-
     const [ nav, setNav ] = useState(false);
 
     return (
@@ -25,11 +24,8 @@ const Header = () => {
                     <Link to="/" className="Header__menu--list" >
                         Inicio
                     </Link>
-                    <Link to="/sensor" className="Header__menu--list" >
-                        Registros
-                    </Link>
-                    <Link to="/sensor/create" className="Header__menu--list" >
-                        Nuevo registro
+                    <Link to="/pieza" className="Header__menu--list" >
+                        Piezas
                     </Link>
                 </ul>
             </div>

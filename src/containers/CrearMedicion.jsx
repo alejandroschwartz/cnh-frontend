@@ -1,39 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
-import '../styles/components/CreateSensor.scss';
+import '../styles/components/CreateMedition.scss';
 
-const Home = (props) => {
+const CreateSensor = (props) => {
     console.log(props.match.params)
-    const [maquina, setMaquina] = useState({campo: ""});
-    const [descripcion, setDescripcion] = useState({campo: ""});
+    const [piezaId, setPiezaId] = useState({campo: ""});
+    const [medicionDescripcion, setMedicionDescripcion] = useState({campo: ""});
     const [medicion, setMedicion] = useState({campo: ""});
     const [sensors, setSensors] = useState([]);
-
     useEffect(() => {
-        fetch('https://localhost:5001/api/mediciones', {
-            method: "POST"
-        })
+        fetch('https://localhost:5001/api/mediciones', { method: "POST" })
         .then(response => response.json())
         .then(data => setSensors(data))
     }, []);
     console.log(sensors);
- 
-    const changeMaquina = (e) => {
-        setMaquina({ ...maquina, campo: e.target.value });
+    const changePiezaId = (e) => {
+        setPiezaId({ ...piezaId, campo: e.target.value });
     };
     const changeDescripcion = (e) => {
-        setDescripcion({ ...descripcion, campo: e.target.value });
+        setMedicionDescripcion({ ...medicionDescripcion, campo: e.target.value });
     };
     const changeMedicion = (e) => {
         setMedicion({ ...medicion, campo: e.target.value });
     };
-    console.log("Maq:", maquina.campo, "Des:", descripcion.campo, "Med:", medicion.campo)
-
-    function sendSensor(e) {
+    console.log("Maq:", piezaId.campo, "Des:", medicionDescripcion.campo, "Med:", medicion.campo)
+    function sendMedicion(e) {
         e.preventDefault();
         const newSensor = {
-            maquina: maquina.campo,
-            descripcion: descripcion.campo,
+            piezaId: piezaId.campo,
+            medicionDescripcion: medicionDescripcion.campo,
             medicion: medicion.campo,
         };
         fetch('https://localhost:5001/api/mediciones', {
@@ -45,24 +40,24 @@ const Home = (props) => {
         })
         .then(response => response.json())
         .then(data => console.log(data));
-        window.location.href = '/sensor';
+        window.location.href = '/pieza';
     }
 
     return (
-        <div className="CreateSensor_container" >
+        <div className="CreateMedition_container" >
             <h1>Registra una nueva medición</h1>
-            <img className="CreateSensor_img" src="../styles/images/080.png" alt="" />
-            <form className="CreateSensor_form" onSubmit={sendSensor} >
+            <img className="CreateMedition_img" src="../styles/images/080.png" alt="" />
+            <form className="CreateMedition_form" onSubmit={sendMedicion} >
                 <input 
-                    className="CreateSensor_input"
+                    className="CreateMedition_input"
                     type="number" 
-                    name="maquina" 
-                    placeholder="Máquina"
-                    onChange={changeMaquina}
+                    name="piezaId" 
+                    placeholder="Id Pieza"
+                    onChange={changePiezaId}
                     required
                 />
                 <input 
-                    className="CreateSensor_input"
+                    className="CreateMedition_input"
                     type="text" 
                     name="medicion" 
                     placeholder="Medición" 
@@ -70,13 +65,13 @@ const Home = (props) => {
                     required
                 />
                 <input 
-                    className="CreateSensor_input"
+                    className="CreateMedition_input"
                     type="text" 
-                    name="descripcion" 
+                    name="medicionDescripcion" 
                     placeholder="Descripción opcional" 
                     onChange={changeDescripcion}
                 />
-                <button className="CreateSensor_button" type="submit" >
+                <button className="CreateMedition_button" type="submit" >
                     GUARDAR
                 </button>
             </form>
@@ -84,4 +79,4 @@ const Home = (props) => {
     )
 };
 
-export default Home;
+export default CreateSensor;

@@ -25,12 +25,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-     
+    
+    thead {
+        width: 100%;
+    }
     tr {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+    tbody {
+        width: 100%;
     }
     td {
         display: flex;
@@ -70,5 +76,27 @@
         margin: auto;
         text-decoration: none;
         color: #fff;
+    }
+}
+.CrearMedicion_button {
+    margin: 6px auto;
+    padding-top: 10px;
+    width: 100%;
+    max-width: 180px;
+    height: 32px;
+    border: 0;
+    border-radius: 8px;
+    background-color: #409e3d;
+    color: #fff;
+    font-family: $primary-font;
+    // font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+
+    .link {
+        margin-top: 12px;
+        color: #fff;
+        font-weight: 700;
     }
 }
