@@ -4,16 +4,18 @@ import moment from 'moment';
 import { Line } from 'react-chartjs-2';
 
 import '../styles/components/Sensor.scss';
+import '../styles/components/Home.scss';
 
 const Sensor = () => {
     const [sensors, setSensors] = useState([]);
     useEffect(() => {
-        fetch('https://localhost:5001/api/Mediciones', {
+        fetch('https://localhost:44345/api/Piezas', {
             method: "GET"
         })
         .then(response => response.json())
         .then(data => setSensors(data))
     }, []);
+    console.log(sensors)
     const deleteSensor = (e) => {
         e.preventDefault()
         const id = e.target.id;
@@ -25,69 +27,29 @@ const Sensor = () => {
         window.location.href = '/sensor';
     }
 
-    let temp = [];
-    sensors.forEach((item) => (
-        temp.push(item.medicion)
-    ))
-    console.log(temp);
-    const data = {
-        labels: ["1ro", "2do", "3er", "4to", "5to", "6to", "7to", "8vo"],
-        datasets: [
-            {
-                label: "Medidas ( mm. )",
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                borderColor: "rgba(54, 162, 235, 1)",
-                borderWidth: 2,
-                data: temp,
-            },
-        ],
-    };
-    const options = {
-        scales: {
-            y: {
-                min: 139,
-                max: 141
-            }
-        },
-    };
-
     return (
       <div className="Sensor__container">
-        <h2>Gráfico de ultimos registros</h2>
-        <div className="Sensor__grafica">
-            <Line data={data} options={options} />
-        </div>
+        <h2>Listar las piezas</h2>
 
-        <h2>Listar los sensores</h2>
-        <table className="Sensor__card">
-            <tr>
-                <th>Máquina</th>
-                <th>Medición</th>
-                <th>Descripción</th>
-                <th> </th>
-            </tr>
+        <div className="Home__container" >
             {sensors.map((item) => (
-                <tr key={item.id}>
-                    <td>{item.maquina}</td>
-                    <td>{item.medicion} mm</td>
-                    <td>{item.descripcion}</td>
-                    <td>
-                        <div className="Sensor__button">
-                            <Link className="edit" to={"/sensor/edit/" + item._id}>
-                                <i className="fas fa-pen"></i>
-                            </Link>
+                <Link to={"/pieza/" + item.piezaId} key={item.piezaId} >
+                    <div className="Item" >
+                        <div className="Item__container">
+                            <img className="Item__image" src="../styles/images/080.png" />
                         </div>
-                        <button
-                            className="Sensor__button--delete"
-                            id={item._id}
-                            onClick={deleteSensor}
-                        >
-                            <i className="far fa-trash-alt"></i>
-                        </button>
-                    </td>
-                </tr>
+                        <div className="Item__text">
+                            <h2 className="Item__title">{item.piezaNombre}</h2>
+                            <p className="Item__title">
+                                <small>
+                                Medida: {item.piezaMedida}, {item.piezaDescripcion}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </Link>
             ))}
-        </table>
+        </div>
       </div>
     );
 };
